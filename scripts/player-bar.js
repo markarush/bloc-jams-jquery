@@ -19,6 +19,10 @@
     player.skipTo(event.target.value);
   });
 
+  $('volume-control input').on('input', function(event) {
+    player.setVolume(event.target.value);
+  })
+
   setInterval( () => {
     if (player.playState !== 'playing') { return; }
     const currentTime = player.getTime();
@@ -33,7 +37,7 @@
 
     const currentSongIndex = album.songs.indexOf(player.currentlyPlaying);
     const previousSongIndex = currentSongIndex - 1;
-    if (previousSongIndex >= album.songs.length) { return }
+    if (previousSongIndex > album.songs.length) { return }
 
     const prevSong = album.songs[previousSongIndex];
     player.playPause(prevSong);
