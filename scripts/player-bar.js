@@ -19,7 +19,7 @@
     player.skipTo(event.target.value);
   });
 
-  $('volume-control input').on('input', function(event) {
+  $('#volume-control input').on('input', function(event) {
     player.setVolume(event.target.value);
   })
 
@@ -28,8 +28,10 @@
     const currentTime = player.getTime();
     const duration = player.getDuration();
     const percent = (currentTime / duration) * 100;
+    const totalTime = player.getDuration();
     $('#time-control .current-time').text( currentTime );
     $('#time-control input').val(percent);
+    $('#time-control .total-time').text( totalTime );
   }, 1000);
 
   $('button#previous').on('click', function() {
