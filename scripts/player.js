@@ -1,5 +1,5 @@
 class Player {
-  
+
   constructor () {
     this.currentlyPlaying = album.songs[0];
     this.playState = 'stopped';
@@ -47,6 +47,16 @@ class Player {
   setVolume (percent) {
     this.volume = percent;
     this.soundObject.setVolume(percent);
+  }
+
+  prettyTime (timeInSeconds) {
+    let minutes = Math.floor (timeInSeconds / 60);
+    let seconds = Math.round (timeInSeconds - (minutes * 60));
+    if (seconds<10) {
+      seconds = '0' + seconds;
+    }
+    let formattedTime = minutes + ':' + seconds;
+    return formattedTime;
   }
 }
 
